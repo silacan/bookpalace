@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Broadway&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0f6dd2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+}
+
+header {
+    background: #0f6dd2;
+    color: white;
+    position: relative;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#site-title {
+    font-family: 'Broadway', sans-serif;
+    margin: 0;
+}
+
+#search-and-menu {
+    display: flex;
+    align-items: center;
+}
+
+#search-bar {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 500px; /* Arama çubuğunun maksimum genişliği */
+}
+
+/* Menu düğmesini sağ üste taşıyın */
+#main-nav {
+    margin-left: 20px; /* Arama çubuğu ve menü butonu arasında boşluk */
+}
+
+#main-nav button {
+    background: #006fcd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+/* style.css */
+/* ... (Diğer CSS kuralları) ... */
+
+#menu-links {
+    display: none; /* Menü varsayılan olarak gizli */
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 5px;
+}
+
+#menu-links.hidden {
+    display: block;
+}
+
+#menu-links a {
+    display: block;
+    padding: 10px 20px;
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+#menu-links a:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+
+#fixedBar {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+}
+
+#fixedBar a, #genres-link {
+    padding: 0 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+#genres-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    padding: 10px;
+    top: 40px;
+    left: 0;
+    border-radius: 5px;
+}
+
+#genres-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+#genres-link:hover + #genres-dropdown, #genres-dropdown:hover {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    #search-bar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #search-and-menu, #fixedBar {
+        flex-direction: column;
+    }
+
+    #main-nav {
+        position: static;
+        order: -1; /* Menüyü arama çubuğunun üstüne taşır */
+        width: 100%;
+        text-align: right;
+    }
+
+    #menu-links {
+        right: 0;
+        top: 50px;
+    }
+}
+/* Flex container for books */
+.book-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Orta hizalama */
+    gap: 10px; /* Kitaplar arası boşluk */
+}
+
+/* Individual book item */
+.book-item {
+    flex: 0 1 calc(25% - 10px); /* Her kitap için %25 genişlik azaltılmış 10px boşluk */
+    margin-bottom: 20px; /* Kitaplar arası dikey boşluk */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif bir gölge efekti */
+    transition: transform 0.3s ease; /* Geçiş efekti */
+}
+
+.book-item:hover {
+    transform: translateY(-5px); /* Fare üzerine gelindiğinde hafifçe yukarı kaldır */
+}
+
+.book-cover {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.book-title {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.book-author {
+    font-size: 0.8em;
+    color: #555;
+}
+
+/* Ekrandaki kullanılabilir alan daraldığında, kitapları alt alta diz */
+@media (max-width: 1024px) {
+    .book-item {
+        flex: 0 1 calc(50% - 10px); /* Her kitap için %50 genişlik azaltılmış 10px boşluk */
+    }
+}
+
+@media (max-width: 768px) {
+    .book-item {
+        flex: 0 1 100%; /* Küçük ekranlarda her kitap tam genişlik */
+    }
+}
+
+.book-detail-main {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.book-cover-container {
+    flex-basis: 25%; /* Kapak fotoğrafı için yüzde genişlik */
+    padding-right: 20px; /* Fotoğraf ve açıklama arasındaki boşluk */
+}
+
+.book-cover {
+    max-width: 100%;
+    height: auto;
+}
+
+.book-info {
+    flex-basis: 75%; /* Kitap bilgileri için yüzde genişlik */
+    padding: 20px;
+    text-align: left; /* Metin sola hizalandı */
+}
+
+#site-title {
+    font-family: 'Broadway', sans-serif;
+    color: #333; /* Site başlığınızın rengi */
+    text-align: left;
+}
+
+/* Linkler için stil */
+.author a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.author a:hover {
+    text-decoration: underline;
+}
+
+.add-to-cart {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Responsive tasarım için ek kurallar */
+@media (max-width: 768px) {
+    .book-detail-main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-cover-container {
+        padding-right: 0;
+    }
+
+    .book-info {
+        text-align: center;
+    }
+}
+
+
+
+.form-container {
+    max-width: 400px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn {
+    padding: 0.5em 1em;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+#cart-items {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.cart-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#checkout-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#checkout-button:hover {
+    background-color: #0056b3;
+}
